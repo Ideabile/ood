@@ -66,18 +66,18 @@
 },{"./src/dinners":8,"./src/utils":12}],2:[function(require,module,exports){
 (function (__dirname){
 /*
- * asciimo.js 
- * 
+ * asciimo.js
+ *
  * Copyright (c) 2010 Marak Squires
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
  * http://github.com/marak/figlet-js
- * Figlet JS 
- * 
+ * Figlet JS
+ *
  * Copyright (c) 2010 Scott González
  * Dual licensed under the MIT (MIT-LICENSE.txt)
  * and GPL (GPL-LICENSE.txt) licenses.
- * 
+ *
  * http://github.com/scottgonzalez/figlet-js
  */
 
@@ -95,23 +95,23 @@ else{
 
 var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
   fonts: {},
-  
-  parseFont: function(name, fn) { //        debug.log('parseFont', name);  
+
+  parseFont: function(name, fn) { //        debug.log('parseFont', name);
     if (name in Figlet.fonts) {
       fn();
     }
-    Figlet.loadFont(name, function(defn) {          
+    Figlet.loadFont(name, function(defn) {
       Figlet._parseFont(name, defn, fn);
     });
   },
-  
+
   _parseFont: function(name, defn, fn) {
     var lines = defn.split("\n"),
       header = lines[0].split(" "),
       hardblank = header[0].charAt(header[0].length - 1),
       height = +header[1],
       comments = +header[5];
-    
+
     Figlet.fonts[name] = {
       defn: lines.slice(comments + 1),
       hardblank: hardblank,
@@ -120,13 +120,13 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
     };
     fn();
   },
-  
+
   parseChar: function(char, font) { // debug.log('parseChar');
     var fontDefn = Figlet.fonts[font];
     if (char in fontDefn.char) {
       return fontDefn.char[char];
     }
-    
+
     var height = fontDefn.height,
       start = (char - 32) * height,
       charDefn = [],
@@ -155,13 +155,13 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
       fn(result, font);
     });
   },
-  
+
   loadFont: function(name, fn) {
-    if(typeof exports != 'undefined'){
-      var sys = require('sys');
+    if(typeof exports != 'undefined' && typeof window === "undefined"){
+      var util = require('util');
       require("fs").readFile(fontPath + name + ".flf", "utf-8", function(err, contents) {
         if (err) {
-          sys.puts(err);
+          util.puts(err);
         }
         else {
           fn(contents);
@@ -169,20 +169,23 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
       });
     }
     else{
-      $.get(fontPath + name+ '.flf',function(contents){
-        fn(contents);
-      });
-    }   
+      var r = new XMLHttpRequest();
+      r.open("GET", fontPath + name+ '.flf', true);
+      r.onreadystatechange = function () {
+        if (r.readyState != 4 || r.status != 200) return;
+        fn(r.responseText);
+      };
+      r.send();
+    }
   }
 };
 
 })();
 
-
 }).call(this,"/node_modules/asciimo/lib")
-},{"fs":13,"sys":17}],3:[function(require,module,exports){
+},{"fs":13,"util":17}],3:[function(require,module,exports){
 /*
-colors.js 
+colors.js
 
 Copyright (c) 2010 Alexis Sellier (cloudhead) , Marak Squires
 
@@ -225,7 +228,7 @@ Object.defineProperty(String.prototype, 'rainbow', {
     exploded = exploded.map(function(letter) {
       if (letter==" ") {
         return letter;
-      } 
+      }
       else {
         return stylize(letter,rainbowcolors[i++ % rainbowcolors.length]);
       }
@@ -256,6 +259,7 @@ function stylize(str, style) {
   return '\033[' + styles[style][0] + 'm' + str +
          '\033[' + styles[style][1] + 'm';
 };
+
 },{}],4:[function(require,module,exports){
 Figlet.fontList = [
   "3-d",
