@@ -8,7 +8,8 @@ Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
   date: '18/04/2015',
-  time: '19:30'
+  time: '19:30',
+  where: 'Amsterdam'
 });
 
 Dinner.addOwner( Mauro );

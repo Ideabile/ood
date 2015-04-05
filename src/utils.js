@@ -192,8 +192,9 @@ module.exports = Utils = {
     }
 
     if(meal.attributes.date ){
-      cli.h1("When:___" + meal.attributes.date, 'blue', 'yellow_bg', 'bold');
-      if( meal.attributes.time ) cli.h1("At:____" + meal.attributes.time, 'red', 'yellow_bg', 'bold');
+      cli.h1("When:____" + meal.attributes.date, 'green', 'yellow_bg', 'bold');
+      if( meal.attributes.time ) cli.h1("At:_______" + meal.attributes.time, 'white', 'yellow_bg', 'bold');
+      if( meal.attributes.where ) cli.h1("Where:___" + meal.attributes.where, 'red', 'yellow_bg', 'bold');
       cli.h2("-----------");
     }
 
