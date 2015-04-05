@@ -4,18 +4,13 @@
   "description": "Object Oriented Dinner",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "compile": "node node_modules/browserify index.js -o dist/main.js"
   },
   "author": "Mauro Mandracchia - <info@ideabile.com>",
   "license": "MIT",
   "dependencies": {
-    "ascii-art": "0.0.2-alpha",
-    "asciimo": "git://github.com/ideabile/asciimo#master",
-    "async": "^0.9.0",
-    "backbone": "^1.1.2",
     "browserify": "^9.0.6",
-    "cli-color": "^0.3.3",
-    "colors": "^1.0.3",
-    "underscore": "^1.8.3"
+    "asciimo": "git://github.com/ideabile/asciimo#master"
   }
 }
