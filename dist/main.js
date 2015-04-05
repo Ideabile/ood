@@ -63,7 +63,7 @@
 })(global || window);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./src/dinners":8,"./src/utils":12}],2:[function(require,module,exports){
+},{"./src/dinners":7,"./src/utils":11}],2:[function(require,module,exports){
 (function (__dirname){
 /*
  * asciimo.js
@@ -169,9 +169,8 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
       });
     }
     else{
-      console.log(fontPath);
       var r = new XMLHttpRequest();
-      r.open("GET", '/ood/'+fontPath + name+ '.flf', true);
+      r.open("GET", '/ood'+fontPath + name+ '.flf', true);
       r.onreadystatechange = function () {
         if (r.readyState != 4 || r.status != 200) return;
         fn(r.responseText);
@@ -184,7 +183,7 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
 })();
 
 }).call(this,"/node_modules/asciimo/lib")
-},{"fs":13,"util":17}],3:[function(require,module,exports){
+},{"fs":12,"util":16}],3:[function(require,module,exports){
 /*
 colors.js
 
@@ -419,30 +418,19 @@ Figlet.fontList = [
 },{}],5:[function(require,module,exports){
 var MauroMandracchia;
 module.exports = MauroMandracchia = new Person({
-  name: 'Cristina',
-  last_name: 'Valota',
-  nationality: 'Italia',
-  description: 'He love food, has much JavaScript'
-});
-
-},{}],6:[function(require,module,exports){
-var MauroMandracchia;
-module.exports = MauroMandracchia = new Person({
   name: 'Mauro',
   last_name: 'Mandracchia',
   nationality: 'Italia',
   description: 'He love food, has much JavaScript'
 });
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 var Mauro = require('./../attenders/MauroMandracchia'),
-    Cristina = require('./../attenders/CristinaValota'),
     MontePulcianoWine = require('./../recepies/wine-monte_pulciano'),
     PastaCarbonara = require('./../recepies/pasta-carbonara'),
     DessertTiramisu = require('./../recepies/dessert-tiramisu');
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
-// Cristina.brings(MontePulcianoWine);
 
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
@@ -453,12 +441,12 @@ var Dinner = new Meal({
 Dinner.addOwner( Mauro );
 module.exports = Dinner;
 
-},{"./../attenders/CristinaValota":5,"./../attenders/MauroMandracchia":6,"./../recepies/dessert-tiramisu":9,"./../recepies/pasta-carbonara":10,"./../recepies/wine-monte_pulciano":11}],8:[function(require,module,exports){
+},{"./../attenders/MauroMandracchia":5,"./../recepies/dessert-tiramisu":8,"./../recepies/pasta-carbonara":9,"./../recepies/wine-monte_pulciano":10}],7:[function(require,module,exports){
 module.exports = [
   require('./180415-oop_introduction')
 ];
 
-},{"./180415-oop_introduction":7}],9:[function(require,module,exports){
+},{"./180415-oop_introduction":6}],8:[function(require,module,exports){
 var Tiramisu;
 module.exports = Tiramisu = new Recepie({
   name: 'Tiramisu\'',
@@ -479,7 +467,7 @@ module.exports = Tiramisu = new Recepie({
   ]
 });
 
-},{}],10:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 var Carbonara;
 module.exports = Carbonara = new Recepie({
   name: 'Pasta alla Carbonara',
@@ -496,7 +484,7 @@ module.exports = Carbonara = new Recepie({
   ]
 });
 
-},{}],11:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 var MontePulcianoWine;
 module.exports = MontePulcianoWine = new Recepie({
   name: 'Monte Pulciano Wine',
@@ -507,7 +495,7 @@ module.exports = MontePulcianoWine = new Recepie({
   ]
 });
 
-},{}],12:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 (function (global){
 var Utils;
 
@@ -517,7 +505,7 @@ var fonts = require('asciimo/lib/fonts'),
     color = require('asciimo/lib/colors');
 
 
-var TIME = window ? 3000 : 1000,
+var TIME = (typeof window === 'undefined') ? 3000 : 1000,
     SLICE = 2,
     cli_utils = {
 
@@ -626,24 +614,32 @@ var TIME = window ? 3000 : 1000,
     cli_utils_web = {
         stream : [],
 
-        h1: function(prase, color, bg, style){
-          var color = color || 'blue',
-              type ='doom';
+        h1: function(prase, color, bg, style, type){
+              color = color || 'blue',
+              type = type || 'banner3-D';
 
+          if(!prase) return false;
+          prase = prase.trim();
+
+          var self = this,
+              praseParsed = cli_utils.isLongPrase(prase);
+
+          if(praseParsed) prase = praseParsed.prase;
           this.stream.push(function(cb){
-            console.log(prase);
             var isCalled = true;
             ascii.loadFont(type, function(rsp){
               ascii.write(prase, type, function(art){
-                if(isCalled) cb('<pre>'+art+'</pre>');
+                if(isCalled) cb('<pre style="color: '+color+';">'+art+'</pre>');
                 isCalled = false;
               });
             });
           });
+          if(praseParsed) this.h1(praseParsed.rest, color, bg, style);
         },
 
         h2: function(prase, color, bg, style){
-            this.h1(prase, color, bg, style);
+            color = color || 'magenta';
+            this.h1(prase, color, bg, style, 'Doom');
         },
 
 
@@ -659,6 +655,7 @@ var TIME = window ? 3000 : 1000,
                       wrapper.innerHTML = _text;
 
                       document.body.appendChild(wrapper);
+                      window.scrollTo(0,document.body.scrollHeight);
 
                       if(self.stream.length !== 0){
                         self.render();
@@ -682,6 +679,8 @@ module.exports = Utils = {
     var cli = cli_utils;
     if(typeof window !== 'undefined') cli = cli_utils_web;
     var attributes = (meal) ? (meal.attributes || false) : false;
+
+    cli.h1("OOD ~ Object Oriented Dinner", 'magenta', false, 'bold');
 
     cli.h1("Hey there next", 'blue', false, 'bold');
     cli.h1("dinner is:", 'blue', false, 'bold');
@@ -736,9 +735,9 @@ module.exports = Utils = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"asciimo":2,"asciimo/lib/colors":3,"asciimo/lib/fonts":4}],13:[function(require,module,exports){
+},{"asciimo":2,"asciimo/lib/colors":3,"asciimo/lib/fonts":4}],12:[function(require,module,exports){
 
-},{}],14:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -763,7 +762,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],15:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -823,14 +822,14 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],16:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],17:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1420,4 +1419,4 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":16,"_process":15,"inherits":14}]},{},[1]);
+},{"./support/isBuffer":15,"_process":14,"inherits":13}]},{},[1]);
