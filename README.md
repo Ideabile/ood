@@ -61,4 +61,4 @@ Take a look to one of the files bellow to ```src/recepies```.
 #### How to start?
 ```
 git clone https://github.com/Ideabile/ood.git && cd ood && npm install && node index.js
-```.
+```
