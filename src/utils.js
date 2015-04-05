@@ -117,7 +117,7 @@ var TIME = (typeof window === 'undefined') ? 3000 : 1000,
 
         h1: function(prase, color, bg, style){
           var color = color || 'blue',
-              type ='doom';
+              type ='Doom';
 
           this.stream.push(function(cb){
             console.log(prase);
