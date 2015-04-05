@@ -1,6 +1,6 @@
 {
   "name": "ood",
-  "version": "0.0.1",
+  "version": "0.0.1a",
   "description": "Object Oriented Dinner",
   "main": "index.js",
   "scripts": {
