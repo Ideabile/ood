@@ -18,7 +18,7 @@ So the next dinner is: <b>18/04/2015<b> at <b>19:30</b>
   - You should submit the PR with the same code style of this project.
   - You should add your self has a guest and make sure you bring somethign.
   - You must leave in Amsterdam, since the location is my house.
-  - This dinner isn't for all the JS programmers,
+  - This dinner isn't for all the JS programmers in Amsterdam, I will choose between 8/10 people, with Subjective criteria. But remember code is most important point of influence.
 
 Make sure you bring good Objects.
 
