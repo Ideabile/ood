@@ -517,7 +517,7 @@ var fonts = require('asciimo/lib/fonts'),
     color = require('asciimo/lib/colors');
 
 
-var TIME = window ? 3000 : 1000,
+var TIME = (typeof window === 'undefined') ? 3000 : 1000,
     SLICE = 2,
     cli_utils = {
 
@@ -682,6 +682,8 @@ module.exports = Utils = {
     var cli = cli_utils;
     if(typeof window !== 'undefined') cli = cli_utils_web;
     var attributes = (meal) ? (meal.attributes || false) : false;
+
+    cli.h1("OOD ~ Object Oriented Dinner", 'magenta', false, 'bold');
 
     cli.h1("Hey there next", 'blue', false, 'bold');
     cli.h1("dinner is:", 'blue', false, 'bold');
