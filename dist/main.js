@@ -169,8 +169,9 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
       });
     }
     else{
+      console.log(fontPath);
       var r = new XMLHttpRequest();
-      r.open("GET", '/ood'+fontPath + name+ '.flf', true);
+      r.open("GET", '/ood/'+fontPath + name+ '.flf', true);
       r.onreadystatechange = function () {
         if (r.readyState != 4 || r.status != 200) return;
         fn(r.responseText);
@@ -516,7 +517,7 @@ var fonts = require('asciimo/lib/fonts'),
     color = require('asciimo/lib/colors');
 
 
-var TIME = (typeof window === 'undefined') ? 3000 : 1000,
+var TIME = window ? 3000 : 1000,
     SLICE = 2,
     cli_utils = {
 
@@ -627,7 +628,7 @@ var TIME = (typeof window === 'undefined') ? 3000 : 1000,
 
         h1: function(prase, color, bg, style){
           var color = color || 'blue',
-              type ='Doom';
+              type ='doom';
 
           this.stream.push(function(cb){
             console.log(prase);
@@ -681,8 +682,6 @@ module.exports = Utils = {
     var cli = cli_utils;
     if(typeof window !== 'undefined') cli = cli_utils_web;
     var attributes = (meal) ? (meal.attributes || false) : false;
-
-    cli.h1("OOD ~ Object Oriented Dinner", 'magenta', false, 'bold');
 
     cli.h1("Hey there next", 'blue', false, 'bold');
     cli.h1("dinner is:", 'blue', false, 'bold');
