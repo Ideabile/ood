@@ -1,5 +1,7 @@
 ## [OOD ~ Object Oriented Dinner](https://ideabile.github.io/ood/)
+
 ***<sup><sub>v. 0.0.1a</sub></sup>***
+
 ![Object Oriented Dinner](http://www.craveonline.com/images/stories/2011/2012/March/Comedy/10-nerdy-last-suppers/last-supper-science.jpg)
 
 The scope of this repository is: ***Make a Dinner***;
@@ -69,7 +71,8 @@ Take a look to one of the files bellow to ```src/dinners```, and then take a loo
 #### How I can add an Object that I bring?
 Take a look to one of the files bellow to ```src/recepies```.
 
-#### How to start?
+
+#### How I can start?
 ```
 git clone https://github.com/Ideabile/ood.git && cd ood && npm install && node index.js
 ```
