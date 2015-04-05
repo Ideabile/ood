@@ -115,24 +115,32 @@ var TIME = (typeof window === 'undefined') ? 3000 : 1000,
     cli_utils_web = {
         stream : [],
 
-        h1: function(prase, color, bg, style){
-          var color = color || 'blue',
-              type ='doom';
+        h1: function(prase, color, bg, style, type){
+              color = color || 'blue',
+              type = type || 'banner3-D';
 
+          if(!prase) return false;
+          prase = prase.trim();
+
+          var self = this,
+              praseParsed = cli_utils.isLongPrase(prase);
+
+          if(praseParsed) prase = praseParsed.prase;
           this.stream.push(function(cb){
-            console.log(prase);
             var isCalled = true;
             ascii.loadFont(type, function(rsp){
               ascii.write(prase, type, function(art){
-                if(isCalled) cb('<pre>'+art+'</pre>');
+                if(isCalled) cb('<pre style="color: '+color+';">'+art+'</pre>');
                 isCalled = false;
               });
             });
           });
+          if(praseParsed) this.h1(praseParsed.rest, color, bg, style);
         },
 
         h2: function(prase, color, bg, style){
-            this.h1(prase, color, bg, style);
+            color = color || 'magenta';
+            this.h1(prase, color, bg, style, 'Doom');
         },
 
 
@@ -148,6 +156,7 @@ var TIME = (typeof window === 'undefined') ? 3000 : 1000,
                       wrapper.innerHTML = _text;
 
                       document.body.appendChild(wrapper);
+                      window.scrollTo(0,document.body.scrollHeight);
 
                       if(self.stream.length !== 0){
                         self.render();
@@ -178,13 +187,14 @@ module.exports = Utils = {
     cli.h1("dinner is:", 'blue', false, 'bold');
 
     if(meal.attributes.title){
-      cli.h1(meal.attributes.title, 'magenta');
+      cli.h1(meal.attributes.title, 'white');
       cli.h2("-----------");
     }
 
     if(meal.attributes.date ){
-      cli.h1("When:___" + meal.attributes.date, 'blue', 'yellow_bg', 'bold');
-      if( meal.attributes.time ) cli.h1("At:____" + meal.attributes.time, 'red', 'yellow_bg', 'bold');
+      cli.h1("When:____" + meal.attributes.date, 'green', 'yellow_bg', 'bold');
+      if( meal.attributes.time ) cli.h1("At:_______" + meal.attributes.time, 'white', 'yellow_bg', 'bold');
+      if( meal.attributes.where ) cli.h1("Where:___" + meal.attributes.where, 'red', 'yellow_bg', 'bold');
       cli.h2("-----------");
     }
 
