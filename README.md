@@ -69,7 +69,8 @@ Take a look to one of the files bellow to ```src/dinners```, and then take a loo
 #### How I can add an Object that I bring?
 Take a look to one of the files bellow to ```src/recepies```.
 
-#### How to start?
+
+#### How I can start?
 ```
 git clone https://github.com/Ideabile/ood.git && cd ood && npm install && node index.js
 ```
