@@ -1,6 +1,6 @@
 var Tiramisu;
 module.exports = Tiramisu = new Recepie({
-  name: 'Tiramisú',
+  name: 'Tiramisu\'',
   category: 'dessert',
   composition: [
       new Recepie({name: 'coffee', category: 'drink'}),

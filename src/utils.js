@@ -1,45 +1,31 @@
-var Utils,
-    colors = require('cli-color'),
-    ascii = require('ascii-art'),
-    async = require('async'),
-    TIME = 1000,
+var Utils;
+
+var ascii = require('asciimo').Figlet;
+global.Figlet = {};
+var fonts = require('asciimo/lib/fonts'),
+    color = require('asciimo/lib/colors');
+
+
+var TIME = (typeof window === 'undefined') ? 3000 : 1000,
     SLICE = 2,
-    cli = {
+    cli_utils = {
+
       stream: [],
 
-      render: function(cb_complete){
-        var text = "",
-            i = 0,
-            self = this,
-            cb = function(_stream, end){
-
-              _stream(function(_text){
-                text += _text;
-                if(i == (self.stream.length-1)) cb_complete(text);
-                i++;
-                end();
-              });
-
-            };
-
-            return this.parseStream(cb);
-
-      },
-
-      renderTime: function(){
+      render: function(){
           var text = "",
               i = 1,
               self = this,
               step = this.stream.shift(),
               cb = function(_text){
                   var _time = i*TIME;
-
+                      // console.log(_text);
                       setTimeout(function(){
-                        console.log(_text);
+                        // console.log(_text);
                         if(self.stream.length === 0){
 
                         }else{
-                          self.renderTime();
+                          self.render();
                         }
                       }, _time);
 
@@ -49,13 +35,14 @@ var Utils,
 
       },
 
-      parseStream: function(cb){
-        return async.each(this.stream, cb);
-      },
-
-      print_ascii: function(prase, type, color, style, cb){
-        ascii.font(prase, type, color, function(rendered){
-            cb(ascii.style(rendered, style));
+      print_ascii: function(_prase, type, color, style, cb){
+        var isCalled = true;
+        ascii.write(_prase, type, function(art){
+            if(isCalled){ // @todo: Remove Workaround, this is called twice.
+              console.log(art[color]);
+            }
+            cb(art[color]);
+            isCalled = false;
         });
       },
 
@@ -98,7 +85,7 @@ var Utils,
 
         if(praseParsed) prase = praseParsed.prase;
         this.stream.push(function(cb){
-          self.print_ascii(prase, 'Basic', color, _style, function(rendered){
+          self.print_ascii(prase, 'banner3-D', color, _style, function(rendered){
             cb("\n"+rendered+"\n");
           });
         });
@@ -124,17 +111,68 @@ var Utils,
         });
         if(praseParsed) this.h2(praseParsed.rest, color, bg, style);
       }
+    },
+    cli_utils_web = {
+        stream : [],
+
+        h1: function(prase, color, bg, style){
+          var color = color || 'blue',
+              type ='doom';
+
+          this.stream.push(function(cb){
+            console.log(prase);
+            var isCalled = true;
+            ascii.loadFont(type, function(rsp){
+              ascii.write(prase, type, function(art){
+                if(isCalled) cb('<pre>'+art+'</pre>');
+                isCalled = false;
+              });
+            });
+          });
+        },
+
+        h2: function(prase, color, bg, style){
+            this.h1(prase, color, bg, style);
+        },
+
+
+        render: function(){
+            var text = "",
+                i = 1,
+                self = this,
+                step = this.stream.shift(),
+                _time = i*TIME,
+                cb = function(_text){
+                    setTimeout(function(){
+                      var wrapper= document.createElement('div');
+                      wrapper.innerHTML = _text;
+
+                      document.body.appendChild(wrapper);
+
+                      if(self.stream.length !== 0){
+                        self.render();
+                      }
+
+                    }, _time);
+                };
+
+              step(cb);
+
+        }
     };
 
 module.exports = Utils = {
 
   render: function( meal ){
-    if(typeof window === "undefined") return this.parseForConsole( meal );
-    return this.parseForHtml( meal );
+    return this.body( meal );
   },
 
-  parseForConsole: function( meal ){
+  body: function( meal ){
+    var cli = cli_utils;
+    if(typeof window !== 'undefined') cli = cli_utils_web;
     var attributes = (meal) ? (meal.attributes || false) : false;
+
+    cli.h1("OOD ~ Object Oriented Dinner", 'magenta', false, 'bold');
 
     cli.h1("Hey there next", 'blue', false, 'bold');
     cli.h1("dinner is:", 'blue', false, 'bold');
@@ -183,7 +221,7 @@ module.exports = Utils = {
     cli.h1("So ready to Join?");
     cli.h1("Make the PR", 'red');
 
-    cli.renderTime();
+    cli.render();
 
   }
 };
