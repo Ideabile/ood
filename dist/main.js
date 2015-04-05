@@ -687,7 +687,7 @@ module.exports = Utils = {
     cli.h1("dinner is:", 'blue', false, 'bold');
 
     if(meal.attributes.title){
-      cli.h1(meal.attributes.title, 'magenta');
+      cli.h1(meal.attributes.title, 'white');
       cli.h2("-----------");
     }
 
