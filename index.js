@@ -6,7 +6,7 @@
   }
 
   // Person
-  // This is a generic person to rapresent the partecipants
+  // This is a generic person to rapresent the participants
   function Person(){
     Obj.call(this, arguments[0]);
   }

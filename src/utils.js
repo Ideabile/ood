@@ -218,8 +218,9 @@ module.exports = Utils = {
         var guest = meal.attributes.guests[z].attributes;
         cli.h2("-----------");
         cli.h1(guest.name+" brings:", 'red');
+        
         for(var x in guest.brings){
-          var item_guest = guest.brings[x] ? guest.brings[x].name : "";
+          var item_guest = guest.brings[x].attributes ? guest.brings[x].attributes.name : "";
           if(typeof item_guest === "string" && item_guest.trim() !== "") cli.h2(item_guest);
 
         }
