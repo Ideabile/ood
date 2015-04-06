@@ -1,15 +1,17 @@
 ## [OOD ~ Object Oriented Dinner](https://ideabile.github.io/ood/)
+
 ***<sup><sub>v. 0.0.1a</sub></sup>***
+
 ![Object Oriented Dinner](http://www.craveonline.com/images/stories/2011/2012/March/Comedy/10-nerdy-last-suppers/last-supper-science.jpg)
 
 The scope of this repository is: ***Make a Dinner***;
 You are around Holland, and maybe you are also *a Friend* or *Colleague* (*This is a requirement for this alpha*). Whatever.
 You are a cool guy I know! 8-)
 
-To join is really easy: You have to fork this repository, and then create a PR with you, and the *Objects* that your *bring*.
+To join is really easy: You have to fork this repository, and then create a PR with you, and the *Objects* that you've *bring*.
 Remember to add all the Objs to the dinner.
 
-If I approve your PR. Your are invited to dinner at my place, with some other programmers, which would like to talk about the same topic.
+If I approve your PR. You are invited to dinner at my place, with some other programmers, which would like to talk about the same topic.
 
 The criteria's, can be totally subjective, in the sense you can do a super PR, with super clean Objs, but then with a second class wine, I'm sorry that is [unacceptable](https://m.youtube.com/watch?v=07So_lJQyqw). :-P
 
@@ -26,9 +28,9 @@ So the next dinner is: <b>18/04/2015<b> at <b>19:30</b>
 
 ----
 
-#### Requiremens:
+#### Requirements:
   - You should submit the PR with the same code style of this project.
-  - You should add your self has a guest and make sure you bring something.
+  - You should add yourself has a guest and make sure you bring something.
   - You should understand this isn't a restaurant, or opportunity for a free dinner. I like you feel home with organizing this together with me.
   - This is an *Alpha* version, You must be a person that I already know.
 
@@ -56,18 +58,18 @@ Person => {
 Some other generics Objects for the dinner
 - **Ingredient**
 - **Manipulation**
-- **Recepie**
+- **Recipe**
 
 ----
 
 ### FAQ
-This FAQ should be useless because code should be self explanatory. But in case you are scared of code I try to give you small suggestions.
+This FAQ should be useless because code should be self-explanatory. But in case you are scared of code I try to give you small suggestions.
 
-#### How I can add my self to a dinner?
+#### How I can add myself to a dinner?
 Take a look to one of the files bellow to ```src/dinners```, and then take a look to ```src/attenders```.
 
 #### How I can add an Object that I bring?
-Take a look to one of the files bellow to ```src/recepies```.
+Take a look to one of the files bellow to ```src/recipes```.
 
 
 #### How I can start?
@@ -82,7 +84,7 @@ Yes of course this is published with MIT License.
 We still didn't give it a try, let's see after a we try out.
 But yeah! If you find it cool!!! Let's keep in contact.
 
-#### Can I bring Drugs, B\*\*\*, and other let's say offensive *Objects* that they aren't in contest of the dinner?
+#### Can I bring Drugs, B\*\*\*, and other let's say offensive *Objects* that they aren't in context of the dinner?
 NO. Come on! Is also not original, I know you can find something better and still be funny!
 
 #### Who is the Autor?

@@ -1,5 +1,5 @@
 var MontePulcianoWine;
-module.exports = MontePulcianoWine = new Recepie({
+module.exports = MontePulcianoWine = new Recipe({
   name: 'Monte Pulciano Wine',
   category: 'wine',
   brand: 'Santa Cristina', composition: [

@@ -6,7 +6,7 @@
   }
 
   // Person
-  // This is a generic person to rapresent the partecipants
+  // This is a generic person to rapresent the participants
   function Person(){
     Obj.call(this, arguments[0]);
   }
@@ -50,7 +50,7 @@
   };
   global.Meal = Meal;
 
-  global.Ingredient = global.Manipulation = global.Recepie = Obj;
+  global.Ingredient = global.Manipulation = global.Recipe = Obj;
 
   var dinners = require('./src/dinners'),
       last_dinner = dinners[(dinners.length-1)],
