@@ -50,7 +50,7 @@
   };
   global.Meal = Meal;
 
-  global.Ingredient = global.Manipulation = global.Recepie = Obj;
+  global.Ingredient = global.Manipulation = global.Recipe = Obj;
 
   var dinners = require('./src/dinners'),
       last_dinner = dinners[(dinners.length-1)],

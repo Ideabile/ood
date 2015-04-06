@@ -1,9 +1,9 @@
 var Carbonara;
-module.exports = Carbonara = new Recepie({
+module.exports = Carbonara = new Recipe({
   name: 'Pasta alla Carbonara',
   category: 'pasta-dish',
   composition: [
-      new Recepie({name: 'spaghetti', category: 'pasta'}),
+      new Recipe({name: 'spaghetti', category: 'pasta'}),
       new Manipulation({name: 'boiling'}),
       new Ingredient({name: 'bacon', category: 'meat', attributes: ['smoked', 'cubic']}),
       new Manipulation({name: 'cook', desc: 'light fried with butter'}),
