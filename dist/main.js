@@ -63,7 +63,7 @@
 })(global || window);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./src/dinners":8,"./src/utils":15}],2:[function(require,module,exports){
+},{"./src/dinners":9,"./src/utils":17}],2:[function(require,module,exports){
 (function (__dirname){
 /*
  * asciimo.js
@@ -183,7 +183,7 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
 })();
 
 }).call(this,"/node_modules/asciimo/lib")
-},{"fs":16,"util":20}],3:[function(require,module,exports){
+},{"fs":18,"util":22}],3:[function(require,module,exports){
 /*
 colors.js
 
@@ -416,6 +416,14 @@ Figlet.fontList = [
   "whimsy"
 ];
 },{}],5:[function(require,module,exports){
+var HectorReyesAleman;
+module.exports = HectorReyesAleman = new Person({
+    name: 'Hector',
+    last_name: 'Reyes-Aleman',
+    nationality: 'Mexico',
+    description: 'This Js Stuff!'
+});
+},{}],6:[function(require,module,exports){
 var MauroMandracchia;
 module.exports = MauroMandracchia = new Person({
   name: 'Mauro',
@@ -424,7 +432,7 @@ module.exports = MauroMandracchia = new Person({
   description: 'He love food, has much JavaScript'
 });
 
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 var NielsDequeker;
 module.exports = NielsDequeker = new Person({
   name: 'Niels',
@@ -433,18 +441,21 @@ module.exports = NielsDequeker = new Person({
   description: 'niels.js'
 });
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 var Mauro = require('./../attenders/MauroMandracchia'),
-	  Niels = require('./../attenders/NielsDequeker'),
+    Hector = require('./../attenders/HectorReyesAleman'),
+    Niels = require('./../attenders/NielsDequeker'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
     BeerDuvel = require('./../recipes/beer-duvel'),
     BeerWestmalle = require('./../recipes/beer-westmalle'),
-    BeerLeffe = require('./../recipes/beer-leffe');
+    BeerLeffe = require('./../recipes/beer-leffe'),
+    Guacamole = require('./../recipes/guacamole');
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Niels.brings([ BeerDuvel, BeerWestmalle, BeerLeffe ]);
+Hector.brings([ Guacamole ]);
 
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
@@ -455,14 +466,15 @@ var Dinner = new Meal({
 
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
+Dinner.addGuest( Hector );
 module.exports = Dinner;
 
-},{"./../attenders/MauroMandracchia":5,"./../attenders/NielsDequeker":6,"./../recipes/beer-duvel":9,"./../recipes/beer-leffe":10,"./../recipes/beer-westmalle":11,"./../recipes/dessert-tiramisu":12,"./../recipes/pasta-carbonara":13,"./../recipes/wine-monte_pulciano":14}],8:[function(require,module,exports){
+},{"./../attenders/HectorReyesAleman":5,"./../attenders/MauroMandracchia":6,"./../attenders/NielsDequeker":7,"./../recipes/beer-duvel":10,"./../recipes/beer-leffe":11,"./../recipes/beer-westmalle":12,"./../recipes/dessert-tiramisu":13,"./../recipes/guacamole":14,"./../recipes/pasta-carbonara":15,"./../recipes/wine-monte_pulciano":16}],9:[function(require,module,exports){
 module.exports = [
   require('./180415-oop_introduction')
 ];
 
-},{"./180415-oop_introduction":7}],9:[function(require,module,exports){
+},{"./180415-oop_introduction":8}],10:[function(require,module,exports){
 var DuvelBeer;
 module.exports = DuvelBeer = new Recipe({
   name: 'Duvel',
@@ -474,7 +486,7 @@ module.exports = DuvelBeer = new Recipe({
   ]
 });
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var LeffeBeer;
 module.exports = LeffeBeer = new Recipe({
   name: 'Leffe',
@@ -486,7 +498,7 @@ module.exports = LeffeBeer = new Recipe({
   ]
 });
 
-},{}],11:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var WestmalleBeer;
 module.exports = WestmalleBeer = new Recipe({
   name: 'Westmalle',
@@ -498,7 +510,7 @@ module.exports = WestmalleBeer = new Recipe({
   ]
 });
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 var Tiramisu;
 module.exports = Tiramisu = new Recipe({
   name: 'Tiramisu\'',
@@ -519,7 +531,24 @@ module.exports = Tiramisu = new Recipe({
   ]
 });
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
+var Guacamole;
+module.exports = Guacamole = new Recipe({
+    name: 'Spicy Guacamole and Chips',
+    category: 'Dip',
+    composition: [
+        new Recipe({name: 'guacamole', category: 'Dip'}),
+        new Ingredient({name: 'avocado'}),
+        new Manipulation({name: 'slice', desc: 'Completely slice the avocado in the middle (around the seed)'}),
+        new Ingredient({name: 'Chille'}),
+        new Manipulation({name: 'slice', desc: 'Red Hot Chilly Peppers'}),
+        new Ingredient({name: 'onion'}),
+        new Manipulation({name: 'slice', desc: 'Be Careful with the knife'}),
+        new Ingredient({name: 'Chips'}),
+    ]
+});
+
+},{}],15:[function(require,module,exports){
 var Carbonara;
 module.exports = Carbonara = new Recipe({
   name: 'Pasta alla Carbonara',
@@ -536,7 +565,7 @@ module.exports = Carbonara = new Recipe({
   ]
 });
 
-},{}],14:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var MontePulcianoWine;
 module.exports = MontePulcianoWine = new Recipe({
   name: 'Monte Pulciano Wine',
@@ -547,7 +576,7 @@ module.exports = MontePulcianoWine = new Recipe({
   ]
 });
 
-},{}],15:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (global){
 var Utils;
 
@@ -686,7 +715,7 @@ var TIME = (typeof window === 'undefined') ? 3000 : 1000,
               });
             });
           });
-          if(praseParsed) this.h1(praseParsed.rest, color, bg, style);
+          if(praseParsed) this.h1(praseParsed.rest, color, bg, style, type);
         },
 
         h2: function(prase, color, bg, style){
@@ -789,9 +818,9 @@ module.exports = Utils = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"asciimo":2,"asciimo/lib/colors":3,"asciimo/lib/fonts":4}],16:[function(require,module,exports){
+},{"asciimo":2,"asciimo/lib/colors":3,"asciimo/lib/fonts":4}],18:[function(require,module,exports){
 
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -816,7 +845,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],18:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -876,14 +905,14 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],20:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1473,4 +1502,4 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":19,"_process":18,"inherits":17}]},{},[1]);
+},{"./support/isBuffer":21,"_process":20,"inherits":19}]},{},[1]);

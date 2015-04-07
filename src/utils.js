@@ -135,7 +135,7 @@ var TIME = (typeof window === 'undefined') ? 3000 : 1000,
               });
             });
           });
-          if(praseParsed) this.h1(praseParsed.rest, color, bg, style);
+          if(praseParsed) this.h1(praseParsed.rest, color, bg, style, type);
         },
 
         h2: function(prase, color, bg, style){
