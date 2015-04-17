@@ -10,9 +10,9 @@
   function Person(){
     Obj.call(this, arguments[0]);
   }
-  function isPerson( person ){
+  function somethingExceptPerson( person ){
     return !(person instanceof global.Person);
-  };
+  }
   Person.prototype.brings = function(ingredients){
       if(!this.attributes.brings) this.attributes.brings = [];
       if(typeof ingredients === "object"){
@@ -28,14 +28,14 @@
   var Meal = Obj;
   Meal.prototype._addPartecipant = function(person){
     if(!this.attributes.partecipants) this.attributes.partecipants = [];
-    if(isPerson(person)) throw new Error('You should pass a Person to add a Partecipant');
+    if(somethingExceptPerson(person)) throw new Error('You should pass a Person to add a Partecipant');
     if(!person.type) person.type = "guest";
     this.attributes.partecipants.push(person);
   };
 
   Meal.prototype.addGuest = function(person){
     if(!this.attributes.guests) this.attributes.guests = [];
-    if(isPerson(person)) throw new Error('You should pass a Person to add a Guest');
+    if(somethingExceptPerson(person)) throw new Error('You should pass a Person to add a Guest');
     person.attributes.type = 'guest';
     this._addPartecipant(person);
     this.attributes.guests.push(person);
