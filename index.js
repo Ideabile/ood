@@ -43,7 +43,7 @@
 
   Meal.prototype.addOwner = function(owner){
       if(!this.attributes.owner) this.attributes.owner = false;
-      if(!(owner instanceof global.Person)) throw new Error('You should define a Person to set');
+      if(somethingExceptPerson(owner)) throw new Error('You should define a Person to set');
       owner.attributes.type = 'owner';
       this._addPartecipant(owner);
       this.attributes.owner = owner;
