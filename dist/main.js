@@ -12,9 +12,9 @@
   function Person(){
     Obj.call(this, arguments[0]);
   }
-  function isPerson( person ){
+  function somethingExceptPerson( person ){
     return !(person instanceof global.Person);
-  };
+  }
   Person.prototype.brings = function(ingredients){
       if(!this.attributes.brings) this.attributes.brings = [];
       if(typeof ingredients === "object"){
@@ -30,14 +30,14 @@
   var Meal = Obj;
   Meal.prototype._addPartecipant = function(person){
     if(!this.attributes.partecipants) this.attributes.partecipants = [];
-    if(isPerson(person)) throw new Error('You should pass a Person to add a Partecipant');
+    if(somethingExceptPerson(person)) throw new Error('You should pass a Person to add a Partecipant');
     if(!person.type) person.type = "guest";
     this.attributes.partecipants.push(person);
   };
 
   Meal.prototype.addGuest = function(person){
     if(!this.attributes.guests) this.attributes.guests = [];
-    if(isPerson(person)) throw new Error('You should pass a Person to add a Guest');
+    if(somethingExceptPerson(person)) throw new Error('You should pass a Person to add a Guest');
     person.attributes.type = 'guest';
     this._addPartecipant(person);
     this.attributes.guests.push(person);
@@ -45,7 +45,7 @@
 
   Meal.prototype.addOwner = function(owner){
       if(!this.attributes.owner) this.attributes.owner = false;
-      if(!(owner instanceof global.Person)) throw new Error('You should define a Person to set');
+      if(somethingExceptPerson(owner)) throw new Error('You should define a Person to set');
       owner.attributes.type = 'owner';
       this._addPartecipant(owner);
       this.attributes.owner = owner;
@@ -63,7 +63,7 @@
 })(global || window);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./src/dinners":10,"./src/utils":20}],2:[function(require,module,exports){
+},{"./src/dinners":13,"./src/utils":27}],2:[function(require,module,exports){
 (function (__dirname){
 /*
  * asciimo.js
@@ -183,7 +183,7 @@ var Figlet = (typeof exports !== "undefined" ? exports : window).Figlet = {
 })();
 
 }).call(this,"/node_modules/asciimo/lib")
-},{"fs":21,"util":25}],3:[function(require,module,exports){
+},{"fs":28,"util":32}],3:[function(require,module,exports){
 /*
 colors.js
 
@@ -416,6 +416,15 @@ Figlet.fontList = [
   "whimsy"
 ];
 },{}],5:[function(require,module,exports){
+var AmirSwaleh;
+module.exports = AmirSwaleh = new Person({
+  name: 'Amir',
+  last_name: 'Swaleh',
+  nationality: 'Kenian',
+  description: 'Having fun with some intellectuel people!'
+});
+
+},{}],6:[function(require,module,exports){
 var DickBrouwers;
 module.exports = DickBrouwers = new Person({
     name: 'Dick',
@@ -423,7 +432,16 @@ module.exports = DickBrouwers = new Person({
     nationality: 'Dutch',
     description: 'Don\'t be a Dick!'
 });
-},{}],6:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
+var GinaLolli;
+module.exports = GinaLolli = new Person({
+    name: 'Gina',
+    last_name: 'Lolli',
+    nationality: 'Saffer',
+    description: 'One good thing about music'
+});
+
+},{}],8:[function(require,module,exports){
 var HectorReyesAleman;
 module.exports = HectorReyesAleman = new Person({
     name: 'Hector',
@@ -431,7 +449,16 @@ module.exports = HectorReyesAleman = new Person({
     nationality: 'Mexico',
     description: 'This Js Stuff!'
 });
-},{}],7:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
+var IliaKondrashov;
+module.exports = IliaKondrashov = new Person({
+  name: 'Ilia',
+  last_name: 'Kondrashov',
+  nationality: 'Russian',
+  description: 'JS newbie'
+});
+
+},{}],10:[function(require,module,exports){
 var MauroMandracchia;
 module.exports = MauroMandracchia = new Person({
   name: 'Mauro',
@@ -440,7 +467,7 @@ module.exports = MauroMandracchia = new Person({
   description: 'He love food, has much JavaScript'
 });
 
-},{}],8:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var NielsDequeker;
 module.exports = NielsDequeker = new Person({
   name: 'Niels',
@@ -449,10 +476,13 @@ module.exports = NielsDequeker = new Person({
   description: 'niels.js'
 });
 
-},{}],9:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 var Mauro = require('./../attenders/MauroMandracchia'),
     Hector = require('./../attenders/HectorReyesAleman'),
     Niels = require('./../attenders/NielsDequeker'),
+    Gina = require('./../attenders/GinaLolli'),
+    Ilia = require('./../attenders/IliaKondrashov'),
+    Amir = require('./../attenders/AmirSwaleh'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
@@ -462,12 +492,19 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     Guacamole = require('./../recipes/guacamole'),
     Dick = require('./../attenders/DickBrouwers'),
     Pretzels = require('./../recipes/pretzels'),
-    FrenchRedWine = require('./../recipes/wine-red-french');
+    FrenchRedWine = require('./../recipes/wine-red-french'),
+    WhiteWine = require('./../recipes/white-wine'),
+    BeefWithVegetables = require('./../recipes/beef-with-vegetables')
+    Chips = require('./../recipes/chips'),
+    Wine  = require('./../recipes/wine');
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Niels.brings([ BeerDuvel, BeerWestmalle, BeerLeffe ]);
 Hector.brings([ Guacamole ]);
-Dick.brings([Pretzels, FrenchRedWine]);
+Dick.brings([ Pretzels, FrenchRedWine ]);
+Gina.brings([ WhiteWine]);
+Ilia.brings([ BeefWithVegetables ]);
+Amir.brings([ Wine, Chips ]);
 
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
@@ -479,15 +516,35 @@ var Dinner = new Meal({
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
 Dinner.addGuest( Hector );
-Dinner.addGuest(Dick);
+Dinner.addGuest( Dick );
+Dinner.addGuest( Gina );
+Dinner.addGuest( Ilia );
+Dinner.addGuest( Amir );
 module.exports = Dinner;
 
-},{"./../attenders/DickBrouwers":5,"./../attenders/HectorReyesAleman":6,"./../attenders/MauroMandracchia":7,"./../attenders/NielsDequeker":8,"./../recipes/beer-duvel":11,"./../recipes/beer-leffe":12,"./../recipes/beer-westmalle":13,"./../recipes/dessert-tiramisu":14,"./../recipes/guacamole":15,"./../recipes/pasta-carbonara":16,"./../recipes/pretzels":17,"./../recipes/wine-monte_pulciano":18,"./../recipes/wine-red-french":19}],10:[function(require,module,exports){
+},{"./../attenders/AmirSwaleh":5,"./../attenders/DickBrouwers":6,"./../attenders/GinaLolli":7,"./../attenders/HectorReyesAleman":8,"./../attenders/IliaKondrashov":9,"./../attenders/MauroMandracchia":10,"./../attenders/NielsDequeker":11,"./../recipes/beef-with-vegetables":14,"./../recipes/beer-duvel":15,"./../recipes/beer-leffe":16,"./../recipes/beer-westmalle":17,"./../recipes/chips":18,"./../recipes/dessert-tiramisu":19,"./../recipes/guacamole":20,"./../recipes/pasta-carbonara":21,"./../recipes/pretzels":22,"./../recipes/white-wine":23,"./../recipes/wine":26,"./../recipes/wine-monte_pulciano":24,"./../recipes/wine-red-french":25}],13:[function(require,module,exports){
 module.exports = [
   require('./180415-oop_introduction')
 ];
 
-},{"./180415-oop_introduction":9}],11:[function(require,module,exports){
+},{"./180415-oop_introduction":12}],14:[function(require,module,exports){
+var BeefWithVegetables;
+module.exports = BeefWithVegetables = new Recipe({
+  name: 'Beef with vegetables',
+  category: 'beef-dish',
+  composition: [
+      new Ingredient({name: 'beef', category: 'meat', attributes: ['regular']}),
+      new Manipulation({name: 'cook', desc: 'grill on the pen with a little bit of oil until the first crust'}),
+      new Manipulation({name: 'cook', desc: 'rollover'}),
+      new Manipulation({name: 'cook', desc: 'one more time - another side'}),
+      new Ingredient({name: 'cucumber', category: 'vegetable', attributes: ['fresh']}),
+      new Ingredient({name: 'salad', category: 'grass', attributes: ['fresh']}),
+      new Manipulation({name: 'slice', desc: 'medium cut'}),
+      new Manipulation({name: 'mix', desc: 'everything in a big plate'})
+  ]
+});
+
+},{}],15:[function(require,module,exports){
 var DuvelBeer;
 module.exports = DuvelBeer = new Recipe({
   name: 'Duvel',
@@ -499,7 +556,7 @@ module.exports = DuvelBeer = new Recipe({
   ]
 });
 
-},{}],12:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 var LeffeBeer;
 module.exports = LeffeBeer = new Recipe({
   name: 'Leffe',
@@ -511,7 +568,7 @@ module.exports = LeffeBeer = new Recipe({
   ]
 });
 
-},{}],13:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 var WestmalleBeer;
 module.exports = WestmalleBeer = new Recipe({
   name: 'Westmalle',
@@ -523,7 +580,19 @@ module.exports = WestmalleBeer = new Recipe({
   ]
 });
 
-},{}],14:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
+var Chips;
+module.exports = Chips = new Recipe({
+  name: 'Bag of Chips',
+  category: 'Snack',
+  brand: 'Lays is the best',
+  composition: [
+      new Ingredient({name: 'Salty'}),
+      new Ingredient({name: 'Natural'}),
+      new Manipulation({name: 'Lays natural chips'})
+  ]
+});
+},{}],19:[function(require,module,exports){
 var Tiramisu;
 module.exports = Tiramisu = new Recipe({
   name: 'Tiramisu\'',
@@ -544,7 +613,7 @@ module.exports = Tiramisu = new Recipe({
   ]
 });
 
-},{}],15:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 var Guacamole;
 module.exports = Guacamole = new Recipe({
     name: 'Spicy Guacamole and Chips',
@@ -561,7 +630,7 @@ module.exports = Guacamole = new Recipe({
     ]
 });
 
-},{}],16:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var Carbonara;
 module.exports = Carbonara = new Recipe({
   name: 'Pasta alla Carbonara',
@@ -578,7 +647,7 @@ module.exports = Carbonara = new Recipe({
   ]
 });
 
-},{}],17:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 var Pretzel;
 module.exports = Pretzel = new Recipe({
   name: 'Salty sticks',
@@ -590,7 +659,18 @@ module.exports = Pretzel = new Recipe({
       new Manipulation({name: 'Salt on the stick'})
   ]
 });
-},{}],18:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
+var WhiteWine;
+module.exports = WhiteWine = new Recipe({
+  name: 'Less Red More White',
+  category: 'wine',
+  brand: 'something tasty', composition: [
+      new Ingredient({name: 'white wine'}),
+      new Manipulation({name: 'enjoy with friends'})
+  ]
+});
+
+},{}],24:[function(require,module,exports){
 var MontePulcianoWine;
 module.exports = MontePulcianoWine = new Recipe({
   name: 'Monte Pulciano Wine',
@@ -601,7 +681,7 @@ module.exports = MontePulcianoWine = new Recipe({
   ]
 });
 
-},{}],19:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 var FrenchRedWine;
 module.exports = FrenchRedWine = new Recipe({
   name: 'Something from France',
@@ -611,7 +691,18 @@ module.exports = FrenchRedWine = new Recipe({
       new Manipulation({name: 'open it, drink it'})
   ]
 });
-},{}],20:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
+var Wine;
+module.exports = Wine = new Recipe({
+  name: 'Bottle of Wine',
+  category: 'Drinks',
+  brand: 'No clue',
+  composition: [
+      new Ingredient({name: 'Alcohol'}),
+      new Manipulation({name: 'Bottle of Wine'})
+  ]
+});
+},{}],27:[function(require,module,exports){
 (function (global){
 var Utils;
 
@@ -853,9 +944,9 @@ module.exports = Utils = {
 };
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"asciimo":2,"asciimo/lib/colors":3,"asciimo/lib/fonts":4}],21:[function(require,module,exports){
+},{"asciimo":2,"asciimo/lib/colors":3,"asciimo/lib/fonts":4}],28:[function(require,module,exports){
 
-},{}],22:[function(require,module,exports){
+},{}],29:[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -880,7 +971,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],23:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -940,14 +1031,14 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],24:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],25:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -1537,4 +1628,4 @@ function hasOwnProperty(obj, prop) {
 }
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./support/isBuffer":24,"_process":23,"inherits":22}]},{},[1]);
+},{"./support/isBuffer":31,"_process":30,"inherits":29}]},{},[1]);

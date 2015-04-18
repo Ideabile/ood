@@ -2,6 +2,8 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     Hector = require('./../attenders/HectorReyesAleman'),
     Niels = require('./../attenders/NielsDequeker'),
     Gina = require('./../attenders/GinaLolli'),
+    Ilia = require('./../attenders/IliaKondrashov'),
+    Amir = require('./../attenders/AmirSwaleh'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
@@ -12,10 +14,9 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     Dick = require('./../attenders/DickBrouwers'),
     Pretzels = require('./../recipes/pretzels'),
     FrenchRedWine = require('./../recipes/wine-red-french'),
-    WhiteWine = require('./../recipes/white-wine');
-    Ilia = require('./../attenders/IliaKondrashov'),
+    WhiteWine = require('./../recipes/white-wine'),
     BeefWithVegetables = require('./../recipes/beef-with-vegetables')
-    Chips = require('./../recipes/chips'), 
+    Chips = require('./../recipes/chips'),
     Wine  = require('./../recipes/wine');
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);

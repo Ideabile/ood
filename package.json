@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "compile": "node node_modules/browserify index.js -o dist/main.js"
+    "compile": "browserify index.js -o dist/main.js"
   },
   "author": "Mauro Mandracchia - <info@ideabile.com>",
   "license": "MIT",
