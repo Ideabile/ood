@@ -1,6 +1,7 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
     Hector = require('./../attenders/HectorReyesAleman'),
     Niels = require('./../attenders/NielsDequeker'),
+    Gina = require('./../attenders/GinaLolli'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
@@ -10,12 +11,20 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     Guacamole = require('./../recipes/guacamole'),
     Dick = require('./../attenders/DickBrouwers'),
     Pretzels = require('./../recipes/pretzels'),
-    FrenchRedWine = require('./../recipes/wine-red-french');
+    FrenchRedWine = require('./../recipes/wine-red-french'),
+    WhiteWine = require('./../recipes/white-wine');
+    Ilia = require('./../attenders/IliaKondrashov'),
+    BeefWithVegetables = require('./../recipes/beef-with-vegetables')
+    Chips = require('./../recipes/chips'), 
+    Wine  = require('./../recipes/wine');
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Niels.brings([ BeerDuvel, BeerWestmalle, BeerLeffe ]);
 Hector.brings([ Guacamole ]);
-Dick.brings([Pretzels, FrenchRedWine]);
+Dick.brings([ Pretzels, FrenchRedWine ]);
+Gina.brings([ WhiteWine]);
+Ilia.brings([ BeefWithVegetables ]);
+Amir.brings([ Wine, Chips ]);
 
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
@@ -27,5 +36,8 @@ var Dinner = new Meal({
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
 Dinner.addGuest( Hector );
-Dinner.addGuest(Dick);
+Dinner.addGuest( Dick );
+Dinner.addGuest( Gina );
+Dinner.addGuest( Ilia );
+Dinner.addGuest( Amir );
 module.exports = Dinner;
