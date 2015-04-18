@@ -1,6 +1,7 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
     Hector = require('./../attenders/HectorReyesAleman'),
     Niels = require('./../attenders/NielsDequeker'),
+    Amir = require('./../attenders/AmirSwaleh'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
@@ -10,12 +11,15 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     Guacamole = require('./../recipes/guacamole'),
     Dick = require('./../attenders/DickBrouwers'),
     Pretzels = require('./../recipes/pretzels'),
-    FrenchRedWine = require('./../recipes/wine-red-french');
+    FrenchRedWine = require('./../recipes/wine-red-french'), 
+    Chips = require('./../recipes/chips'), 
+    Wine  = require('./../recipes/wine');
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Niels.brings([ BeerDuvel, BeerWestmalle, BeerLeffe ]);
 Hector.brings([ Guacamole ]);
 Dick.brings([ Pretzels, FrenchRedWine ]);
+Amir.brings([ Wine, Chips ]);
 
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
@@ -28,4 +32,5 @@ Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
 Dinner.addGuest( Hector );
 Dinner.addGuest( Dick );
+Dinner.addGuest( Amir )
 module.exports = Dinner;
