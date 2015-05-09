@@ -1,5 +1,7 @@
 ## [OOD ~ Object Oriented Dinner](https://ideabile.github.io/ood/)
 
+[![Comment-on-Github.Party](https://img.shields.io/badge/Comment%20on-Github.Party-yellow.svg)](https://github.party/item?id=45)
+
 ***<sup><sub>v. 0.0.1a</sub></sup>***
 
 ![Object Oriented Dinner](http://www.craveonline.com/images/stories/2011/2012/March/Comedy/10-nerdy-last-suppers/last-supper-science.jpg)
