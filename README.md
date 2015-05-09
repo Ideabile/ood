@@ -1,4 +1,6 @@
-## [OOD ~ Object Oriented Dinner](https://ideabile.github.io/ood/)[![Comment-on-Github.Party](https://img.shields.io/badge/Comment%20on-Github.Party-yellow.svg)](https://github.party/item?id=45)
+## [OOD ~ Object Oriented Dinner](https://ideabile.github.io/ood/)
+
+[![Comment-on-Github.Party](https://img.shields.io/badge/Comment%20on-Github.Party-yellow.svg)](https://github.party/item?id=45)
 
 ***<sup><sub>v. 0.0.1a</sub></sup>***
 
