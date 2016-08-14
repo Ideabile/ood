@@ -1,4 +1,5 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
+    Ali = require('./../attenders/AliAtrash'),
     Hector = require('./../attenders/HectorReyesAleman'),
     Niels = require('./../attenders/NielsDequeker'),
     Gina = require('./../attenders/GinaLolli'),
@@ -17,8 +18,10 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     WhiteWine = require('./../recipes/white-wine'),
     BeefWithVegetables = require('./../recipes/beef-with-vegetables')
     Chips = require('./../recipes/chips'),
-    Wine  = require('./../recipes/wine');
+    Wine  = require('./../recipes/wine'),
+    Vodka = require('./../recipes/vodka');
 
+Ali.brings([Vodka]);
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Niels.brings([ BeerDuvel, BeerWestmalle, BeerLeffe ]);
 Hector.brings([ Guacamole ]);
@@ -34,6 +37,7 @@ var Dinner = new Meal({
   where: 'Amsterdam'
 });
 
+Dinner.addGuest( Ali );
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
 Dinner.addGuest( Hector );
