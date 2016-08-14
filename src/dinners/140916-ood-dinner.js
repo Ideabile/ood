@@ -4,8 +4,8 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
     Greensalad= require('./../recipes/green-salad');
-Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
-
+Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]),
+alissar.brings([Greensalad]);
 var Dinner = new Meal({
   title: 'Hack your future OOP',
   date: '14/08/2015',
