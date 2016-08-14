@@ -1,5 +1,4 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
-    Ali = require('./../attenders/AliAtrash'),
     Hector = require('./../attenders/HectorReyesAleman'),
     Niels = require('./../attenders/NielsDequeker'),
     Gina = require('./../attenders/GinaLolli'),
