@@ -7,6 +7,7 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     Patat = require('./../recipes/patat');
 Mohanad.brings(Patat);
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
+Ali.brings([Vodka]);
 
 var Dinner = new Meal({
   title: 'Hack your future OOP',
@@ -17,5 +18,5 @@ var Dinner = new Meal({
 
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Mohanad );
-
+Dinner.addGuest( Ali );
 module.exports = Dinner;
