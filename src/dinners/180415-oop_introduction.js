@@ -26,6 +26,7 @@ Dick.brings([ Pretzels, FrenchRedWine ]);
 Gina.brings([ WhiteWine]);
 Ilia.brings([ BeefWithVegetables ]);
 Amir.brings([ Wine, Chips ]);
+Wael.brings([ PastaWithTunaSauce ]);
 
 var Dinner = new Meal({
   title: 'OOP, a Gentle and Tasty Introduction',
@@ -41,4 +42,5 @@ Dinner.addGuest( Dick );
 Dinner.addGuest( Gina );
 Dinner.addGuest( Ilia );
 Dinner.addGuest( Amir );
+Dinner.addGuest( Wael );
 module.exports = Dinner;
