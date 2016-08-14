@@ -8,4 +8,5 @@ module.exports =GreenSalad = new Recipe({
       new Ingredient({name: 'lettuce', category: 'vegetable', attributes: ['fresh']}),
       new Manipulation({name: 'slice', desc: 'medium cut'}),
       new Manipulation({name: 'mix', desc: 'everything in a big plate'})
-  ]
+  ];
+  
