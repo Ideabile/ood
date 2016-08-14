@@ -1,8 +1,9 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
+	alissar = require('./../attenders/alissar'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
-    DessertTiramisu = require('./../recipes/dessert-tiramisu');
-
+    DessertTiramisu = require('./../recipes/dessert-tiramisu'),
+    Greensalad= require('./../recipes/green-salad');
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 
 var Dinner = new Meal({
@@ -12,6 +13,7 @@ var Dinner = new Meal({
   where: 'Amsterdam'
 });
 
-Dinner.addOwner( Mauro );
+Dinner.addOwner( Mauro ),
+Dinner.addGuest(alissar);
 
 module.exports = Dinner;
