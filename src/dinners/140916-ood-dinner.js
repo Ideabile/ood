@@ -1,5 +1,6 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
     Mohanad = require('./../attenders/MohanadMjawaz'),
+    Ali = require('./../attenders/AliAtrash'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
