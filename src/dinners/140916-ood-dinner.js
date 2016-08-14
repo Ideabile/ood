@@ -14,6 +14,6 @@ var Dinner = new Meal({
 });
 
 Dinner.addOwner( Mauro );
-Dinner.addOwner(Mohammad);
+Dinner.addGuest(Mohammad);
 module.exports = Dinner;
 
