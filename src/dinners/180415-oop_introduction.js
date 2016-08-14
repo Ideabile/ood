@@ -36,6 +36,7 @@ var Dinner = new Meal({
 
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
+Dinner.addGuest( Mohanad );
 Dinner.addGuest( Hector );
 Dinner.addGuest( Dick );
 Dinner.addGuest( Gina );
