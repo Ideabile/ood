@@ -18,10 +18,8 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     WhiteWine = require('./../recipes/white-wine'),
     BeefWithVegetables = require('./../recipes/beef-with-vegetables')
     Chips = require('./../recipes/chips'),
-    Wine  = require('./../recipes/wine'),
-    Vodka = require('./../recipes/vodka');
+    Wine  = require('./../recipes/wine');
 
-Ali.brings([Vodka]);
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Niels.brings([ BeerDuvel, BeerWestmalle, BeerLeffe ]);
 Hector.brings([ Guacamole ]);
@@ -37,7 +35,6 @@ var Dinner = new Meal({
   where: 'Amsterdam'
 });
 
-Dinner.addGuest( Ali );
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Niels );
 Dinner.addGuest( Hector );
