@@ -6,7 +6,6 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     chips = require('./../recipes/chips'),
     SpaBlue = require('./../recipes/spaBlue'),
     SpaRood = require('./../recipes/spaRood'),
-    chips = require('./../recipes/chips'),
     Saad = require('./../attenders/SaadHasan') ;
 
     Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
