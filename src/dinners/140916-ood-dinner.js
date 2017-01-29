@@ -1,11 +1,13 @@
 var Mauro = require('./../attenders/MauroMandracchia'),
+    somur = require('./../attenders/somur'),
     Mohanad = require('./../attenders/MohanadMjawaz'),
     Ali = require('./../attenders/AliAtrash'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
     Vodka = require('./../recipes/vodka'),
-    Patat = require('./../recipes/patat');
+    Patat = require('./../recipes/patat'),
+    ;
 
 Mohanad.brings(Patat);
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
@@ -21,4 +23,6 @@ var Dinner = new Meal({
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Mohanad );
 Dinner.addGuest( Ali );
+Dinner.addGuest( somur );
+
 module.exports = Dinner;
