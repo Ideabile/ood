@@ -11,7 +11,8 @@ var Mauro = require('./../attenders/MauroMandracchia'),
 
 Mohanad.brings(Patat);
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
-Ali.brings([Vodka]); 
+Ali.brings([Vodka]);
+somur.brings(["brood"]); 
 
 var Dinner = new Meal({
   title: 'Hack your future OOP',

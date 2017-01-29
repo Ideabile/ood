@@ -3,5 +3,5 @@ module.exports = Somur = new Person({
   name: 'Somur',
   last_name: 'Ruteeb',
   nationality: 'Syria',
-  description: 'hoi hoi'
+  description: 'hoi hoi hoi'
 });
