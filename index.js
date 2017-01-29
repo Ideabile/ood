@@ -1,8 +1,7 @@
 (function(global){
 
   function Obj(){
-      var self = this;
-      self.attributes = arguments[0] || { name: '' };
+      this.attributes = arguments[0] || { name: '' };
   }
 
   // Person
