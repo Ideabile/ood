@@ -5,7 +5,9 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
     Patat = require('./../recipes/patat'),
-    SoftDrinks = require('./../recipes/wine');
+    SoftDrinks = require('./../recipes/wine'),
+    Vodka = require('./../recipes/vodka');
+ 
 Mohanad.brings(Patat);
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 Ali.brings([Vodka]);
