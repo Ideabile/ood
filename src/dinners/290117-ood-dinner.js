@@ -2,6 +2,7 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu');
+    suhaib = require('./../attenders/suhaib'),
 
 Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
 
