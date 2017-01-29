@@ -1,4 +1,4 @@
-var AliAtrash;
+var Somur;
 module.exports = AliAtrash = new Person({
   name: 'Somur',
   last_name: 'Ruteeb',
