@@ -1,5 +1,5 @@
 var Somur;
-module.exports = AliAtrash = new Person({
+module.exports = Somur = new Person({
   name: 'Somur',
   last_name: 'Ruteeb',
   nationality: 'Syria',
