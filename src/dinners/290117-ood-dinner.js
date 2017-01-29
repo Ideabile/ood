@@ -5,10 +5,11 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
     SpaBlue = require('./../recipes/spaBlue'),
     SpaRood = require('./../recipes/spaRood');
+    HomeCookedFarik = require('./../recipes/farik');
 
 
 Mauro.brings([MontePulcianoWine, PastaCarbonara, DessertTiramisu]);
-Eyad.brings([SpaRood, SpaBlue]);
+Eyad.brings([SpaRood, SpaBlue, HomeCookedFarik]);
 
 var Dinner = new Meal({
     title: 'Hack your future OOP',
