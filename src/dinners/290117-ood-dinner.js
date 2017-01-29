@@ -3,16 +3,14 @@ var Mauro = require('./../attenders/MauroMandracchia'),
     MontePulcianoWine = require('./../recipes/wine-monte_pulciano'),
     PastaCarbonara = require('./../recipes/pasta-carbonara'),
     DessertTiramisu = require('./../recipes/dessert-tiramisu'),
-
     chips = require('./../recipes/chips'),
-    Saad = = require('./../attenders/SaadHasan') ;
+    SpaBlue = require('./../recipes/spaBlue'),
+    SpaRood = require('./../recipes/spaRood'),
+    chips = require('./../recipes/chips'),
+    Saad = require('./../attenders/SaadHasan') ;
 
     Mauro.brings([ MontePulcianoWine, PastaCarbonara, DessertTiramisu ]);
     Saad.brings([ chips ]);
-
-    SpaBlue = require('./../recipes/spaBlue'),
-    SpaRood = require('./../recipes/spaRood');
-
     Eyad.brings([SpaRood, SpaBlue]);
 
 
@@ -26,7 +24,6 @@ var Dinner = new Meal({
 
 Dinner.addOwner( Mauro );
 Dinner.addGuest( Saad );
-
 Dinner.addGuest(Eyad);
 
 module.exports = Dinner;
